@@ -8,7 +8,7 @@ using System.Web;
 namespace BillingApplication.Context
 {
     public class CustomerBl
-    { 
+    {  
         //linq query used to retrive customer details from (ImSS_Master_Client) 
         //public List<customer> GetCustomerList()
         //{
