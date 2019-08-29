@@ -17,7 +17,7 @@ namespace BillingApplication.Controllers
         {
             try
             {
-                List<ImSS_Client_Details> listcust = new List<ImSS_Client_Details>();
+                List<customer> listcust = new List<customer>();
                 listcust = CBL.GetCustomerList();
                 ViewBag.Customerlist = listcust;
                 ViewBag.EmployeeNameList = new SelectList(CBL.GetEmployeeNameList(), "Emp_Name", "Emp_Name");
@@ -37,11 +37,11 @@ namespace BillingApplication.Controllers
 
         //inserting customer details
         [HttpPost]
-        public ActionResult CreateCustomer(ImSS_Client_Details emp)
+        public ActionResult CreateCustomer(ImSS_Master_Client emp)
         {
             try
             {
-                ImSS_Client_Details Addcust = new ImSS_Client_Details();
+                ImSS_Master_Client Addcust = new ImSS_Master_Client();
                 Addcust = CBL.AddCustomer(emp);
                 return Json(emp);
             }
