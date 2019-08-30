@@ -22,30 +22,31 @@ namespace BillingApplication.Context
                 {
                     var employeeList = (from a in context.ImSS_Master_Emp_List
                                         join b in context.ImSS_Emp_Details on a.Emp_Number equals b.Employee_ID
+                                        where b.End_Date == null
                                         select new employee
                                         {
                                             ID = a.ID,
-                                        Emp_Number = a.Emp_Number,
-                                        Emp_Name = a.Emp_Name,
-                                        DOJ = a.DOJ,
-                                        Previous_Exp = a.Previous_Exp,
-                                        ImSS_Exp = a.ImSS_Exp,
-                                        Total_Exp = a.Total_Exp,
-                                        Domain = a.Domain,
-                                        Business_Unit = a.Business_Unit,
-                                        Reporting = a.Reporting,
-                                        Start_Date = b.Start_Date,
-                                        Primary_Skills = a.Primary_Skills,
-                                        Secondary_Skills = a.Secondary_Skills,
-                                        Category = a.Category,
-                                        Status = a.Status,
-                                        Mobile_Number = a.Mobile_Number,
-                                        Replaced_by = a.Replaced_by,
-                                        Relived_Date = a.Relived_Date
-                                    }).ToList();
-                return employeeList;
+                                            Emp_Number = a.Emp_Number,
+                                            Emp_Name = a.Emp_Name,
+                                            DOJ = a.DOJ,
+                                            Previous_Exp = a.Previous_Exp,
+                                            ImSS_Exp = a.ImSS_Exp,
+                                            Total_Exp = a.Total_Exp,
+                                            Domain = a.Domain,
+                                            Business_Unit = a.Business_Unit,
+                                            Reporting = a.Reporting,
+                                            Start_Date = b.Start_Date,
+                                            Primary_Skills = a.Primary_Skills,
+                                            Secondary_Skills = a.Secondary_Skills,
+                                            Category = a.Category,
+                                            Status = a.Status,
+                                            Mobile_Number = a.Mobile_Number,
+                                            Replaced_by = a.Replaced_by,
+                                            Relived_Date = a.Relived_Date
+                                        }).ToList();
+                    return employeeList;
 
-            }
+                }
 
             }
 
@@ -59,13 +60,36 @@ namespace BillingApplication.Context
 
 
         //linq query used to insert employee details into (ImSS_Master_Emp_List)
+        //public ImSS_Master_Emp_List AddEmployee(ImSS_Master_Emp_List Addemp)
+        //{
+        //    try
+        //    {
+        //        using (var context = new Billing_StagingEntities1())
+        //        {
+        //            ImSS_Emp_Details lst=new ImSS_Emp_Details();
+        //            lst.Start_Date = DateTime.Now;
+        //            lst.Employee_ID = Addemp.Emp_Number;
+        //            lst.Manager_ID = Addemp.Reporting;
+        //            context.ImSS_Master_Emp_List.Add(Addemp);
+        //            context.ImSS_Emp_Details.Add(lst);
+        //            context.SaveChanges();
+        //            return Addemp;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+
+        //}
+
         public ImSS_Master_Emp_List AddEmployee(ImSS_Master_Emp_List Addemp)
         {
             try
             {
                 using (var context = new Billing_StagingEntities1())
                 {
-                    ImSS_Emp_Details lst=new ImSS_Emp_Details();
+                    ImSS_Emp_Details lst = new ImSS_Emp_Details();
                     lst.Start_Date = DateTime.Now;
                     lst.Employee_ID = Addemp.Emp_Number;
                     lst.Manager_ID = Addemp.Reporting;
@@ -107,9 +131,28 @@ namespace BillingApplication.Context
                     UpdateEmployee.Mobile_Number = empl.Mobile_Number;
                     UpdateEmployee.Replaced_by = empl.Replaced_by;
                     UpdateEmployee.Relived_Date = empl.Relived_Date;
-                    
+
                     context.SaveChanges();
-                    
+                    var val = (from e in context.ImSS_Emp_Details
+                               where e.Employee_ID == empl.Emp_Number && e.Manager_ID == empl.Reporting
+                               && e.End_Date == null
+                               select e).Count();
+                    if (val == 0)
+                    {
+                        ImSS_Emp_Details Empdet = (from c in context.ImSS_Emp_Details where c.Employee_ID == empl.Emp_Number && c.End_Date == null select c).FirstOrDefault();
+                        Empdet.End_Date = DateTime.Now;
+                       
+
+                        
+                        ImSS_Emp_Details lst = new ImSS_Emp_Details();
+                        lst.Start_Date = DateTime.Now;
+                        lst.Employee_ID = empl.Emp_Number;
+                        lst.Manager_ID = empl.Reporting;
+                        
+                        context.ImSS_Emp_Details.Add(lst);
+                        context.SaveChanges();
+
+                    }
 
                     return (from a in context.ImSS_Master_Emp_List select a).ToList();
 
@@ -202,7 +245,7 @@ namespace BillingApplication.Context
             {
                 using (var context = new Billing_StagingEntities1())
                 {
-                    var list = (from a in context.ImSS_Status where a.ID !=5 select a).ToList();
+                    var list = (from a in context.ImSS_Status where a.ID != 5 select a).ToList();
                     return list;
                 }
             }
@@ -228,7 +271,5 @@ namespace BillingApplication.Context
                 throw e;
             }
         }
-
-
     }
 }

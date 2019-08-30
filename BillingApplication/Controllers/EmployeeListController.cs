@@ -23,7 +23,7 @@ namespace BillingApplication.Controllers
                 List<employee> listObj = new List<employee>();
                 listObj = EBL.GetEmployeeList();
                 ViewBag.employeelist = listObj;
-                ViewBag.ReportingList = new SelectList(EBL.GetReportingList(), "ID", "Reporting_Head");
+                ViewBag.ReportingList = new SelectList(EBL.GetReportingList(), "Reporting_Head", "Reporting_Head");
                 ViewBag.BussinessUnitList = new SelectList(EBL.GetBussinessUnitList(), "Business_Unit", "Business_Unit");
                 ViewBag.DomainList = new SelectList(EBL.GetDomainList(), "Domain_Name", "Domain_Name");
                 ViewBag.StatusList = new SelectList(EBL.GetStatusList(), "ImSS_Skills_Category", "ImSS_Skills_Category");

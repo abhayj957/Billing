@@ -175,6 +175,8 @@
             cl.Shadow = row.find(".Shadow").find("span").html();
             cl.Location = row.find(".Location").find("span").html();
             cl.Status = row.find(".Status").find("span").html();
+
+            
             $.ajax({
                 type: "POST",
                 url: "/CustomerList/EditList",
@@ -352,7 +354,8 @@
                 "scrollY": 300,
                 "scrollX": true,
                 "lengthMenu": [[5, 10, 15, 20, 25, 30, 35, 40, 45, 50, - 1], [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, "All"]],
-                "pagingType": "full_numbers"              
+                "pagingType": "full_numbers",    
+                "autoWidth":"fixed"
             });
         });
         $('#demoGrid1').dataTable({});
@@ -438,23 +441,23 @@
         <div style="width:85%;   ">
             <table id="demoGrid1" class="table table-striped table-bordered dt-responsive nowrap" style="width:90%; padding-right:5px;" cellspacing="0">
                 <thead>
-                    <tr>
+                    <tr style="width:100px;">
                         <th>Action</th>
                         <th style="display:none;"><center>ID</center></th>
-                        <th><center>Employee Name</center></th>
-                        <th><center>Client Name</center></th>
-                        <th><center>Client EmailId</center></th>
-                        <th><center>Reporting Manager At Client Place</center></th>
-                        <th><center>Cilent Start Date</center></th>
-                        <th><center>Shadow</center></th>
-                        <th><center>Location</center></th>
-                        <th><center>Status</center></th>
+                        <th ><center>Employee Name</center></th>
+                        <th ><center>Client Name</center></th>
+                        <th ><center>Client Email Id</center></th>
+                        <th ><center>Reporting Manager At Client Place</center></th>
+                        <th ><center>Cilent Start Date</center></th>
+                        <th ><center>Shadow</center></th>
+                        <th ><center>Location</center></th>
+                        <th ><center>Status</center></th>
                     </tr>
                 </thead>
                 <tbody id="searchingdata">
                     @foreach (var item in ViewBag.Customerlist)
                     {
-                        <tr>
+                        <tr style="width:100px;">
                             <td>
                                 <a id="Edit" onclick="functionedit()" class="glyphicon glyphicon-pencil" href="javascript:;"></a>
                                 <a id="Update" onclick="functionupdate()" class="glyphicon glyphicon-ok" href="javascript:;" style="display:none"></a>
@@ -467,36 +470,36 @@
                             <td   class="Emp_Name">
                                 <span>@item.Emp_Name</span>
                                 @*<p  style="display:none;"> @Html.DropDownList("EmployeeDropdown", ViewBag.EmployeeNameList as SelectList)</p>*@
-                                <input disabled type="text" value="@item.Emp_Name" style="display:none" />
+                                <input disabled type="text" value="@item.Emp_Name" style="display:none; width:auto; " />
                             </td>
                             <td class="Client_Name">
                                 <span>@item.Client_Name</span>
                                 @*<p style="display:none;"> @Html.DropDownList("ClientDropdown", ViewBag.ClientList as SelectList)</p>*@
-                                <input disabled type="text" value="@item.Client_Name" style="display:none" />
+                                <input disabled type="text" value="@item.Client_Name" style="display:none; width:auto;" />
                             </td>
                             <td class="Email">
                                 <span>@item.Email</span>
-                                <input type="text" value="@item.Email" style="display:none" />
+                                <input type="text" value="@item.Email" style="display:none; width:auto;" />
                             </td>
                             <td class="Reporting_Manager_at_client_place">
                                 <span>@item.Reporting_Manager_at_client_place</span>
-                                <input type="text" value="@item.Reporting_Manager_at_client_place" style="display:none" />
+                                <input type="text" value="@item.Reporting_Manager_at_client_place" style="display:none; width:auto;" />
                             </td>
                             <td class="Cilent_Start_Date">
                                 <span>@item.Cilent_Start_Date</span>
-                                <input disabled type="text" value="@item.Cilent_Start_Date" style="display:none" />
+                                <input disabled type="text" value="@item.Cilent_Start_Date" style="display:none; width:auto;" />
                             </td>
                             <td class="Shadow">
                                 <span>@item.Shadow</span>
-                                <p style="display:none;"> @Html.DropDownList("ShadowDropdown", ViewBag.ShadowList as SelectList)</p>
+                                <p style="display:none; width:auto;"> @Html.DropDownList("ShadowDropdown", ViewBag.ShadowList as SelectList)</p>
                            </td>
                             <td class="Location">
                                 <span>@item.Location</span>
-                                <p style="display:none;"> @Html.DropDownList("LocationDropdown", ViewBag.LocationList as SelectList)</p>
+                                <p style="display:none; width:auto;"> @Html.DropDownList("LocationDropdown", ViewBag.LocationList as SelectList)</p>
                            </td>
                             <td class="Status">
                                 <span>@item.Status</span>
-                                <p style="display:none;"> @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
+                                <p style="display:none; width:auto; "> @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
                               </td>
                             
                         </tr>

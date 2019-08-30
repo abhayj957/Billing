@@ -86,6 +86,11 @@ namespace BillingApplication.Context
                     UpdateCustomer.Location = cust.Location;
                     UpdateCustomer.Status = cust.Status;
 
+                    if (UpdateCustomer.Status == "Active")
+                    {
+                        ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.Emp_Name == cust.Emp_Name select c).FirstOrDefault();
+                        UpdateEmployee.Status = "Active";
+                    }
                     context.SaveChanges();
 
 
