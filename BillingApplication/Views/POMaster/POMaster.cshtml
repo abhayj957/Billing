@@ -237,7 +237,7 @@
             });
             row.find("#Update").show();
             row.find("#Cancel").show();
-            row.find("#Delete").hide();
+            row.find("#Renew").hide();
             $(this).hide();
         });
 
@@ -256,7 +256,7 @@
                 $(this).find('span').show();
             });
             row.find("#Edit").show();
-            row.find("#Delete").show();
+            row.find("#Renew").show();
             row.find("#Cancel").hide();
             $(this).hide();
 
@@ -392,7 +392,7 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>ID</th>
+                            <th style="display:none;">ID</th>
                             <th>Client Name</th>
                             <th>Project Name</th>
                             <th>PO Number</th>
@@ -414,11 +414,12 @@
                             <tr>
                                 <td>
                                     <a id="Edit" class="glyphicon glyphicon-pencil" href="javascript:;"></a>
+                                    <a id="Renew" class="glyphicon glyphicon-refresh" href="javascript:;"></a>
                                     <a id="Update" class="glyphicon glyphicon-ok" href="javascript:;" style="display:none"></a>
                                     <a id="Cancel" class="glyphicon glyphicon-remove" href="javascript:;" style="display:none"></a>
                                     @*<a id="Delete" class="glyphicon glyphicon-trash" href="javascript:;"></a>*@
                                 </td>
-                                <td class="ID">
+                                <td style="display:none;" class="ID">
                                     <span>@item.ID</span>
                                 </td>
                                 <td class="Client_Name">
