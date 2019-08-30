@@ -56,6 +56,12 @@ namespace BillingApplication.Context
                     lst.Cilent_Start_Date = DateTime.Now;
                     lst.Emp_Number = Addcust.Emp_Name;
                     lst.Cilent_ID = Addcust.Client_Name;
+                    if(Addcust.Status=="Active")
+                    {
+                        ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.Emp_Name == Addcust.Emp_Name select c).FirstOrDefault();
+                        UpdateEmployee.Status = "Assigned";
+                    }
+                    
                     context.ImSS_Master_Client.Add(Addcust);
                     context.ImSS_Cust_Emp_Details.Add(lst);
                     context.SaveChanges();
@@ -89,7 +95,12 @@ namespace BillingApplication.Context
                     if (UpdateCustomer.Status == "Active")
                     {
                         ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.Emp_Name == cust.Emp_Name select c).FirstOrDefault();
-                        UpdateEmployee.Status = "Active";
+                        UpdateEmployee.Status = "Assigned";
+                    }
+                    else
+                    {
+                        ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.Emp_Name == cust.Emp_Name select c).FirstOrDefault();
+                        UpdateEmployee.Status = "Avalible";
                     }
                     context.SaveChanges();
 
