@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3">Client Email Id</label>
                                 <div class="col-sm-3">
-                                    <input class="form-control" type="text" id="ClientEmailId" />
+                                    <input class="form-control" type="text" id="Email" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -110,7 +110,7 @@
             var txtId = $("#Id");
             var txtEmployeeDropdown = $("#EmployeeDropdown");
             var txtClientDropdown = $("#ClientDropdown");
-            var txtClientEmailId = $("#ClientEmailId");
+            var Email = $("#Email");
             var txtReportingManagerAtClientPlace = $("#ReportingManagerAtClientPlace");
 
             var txtShadowDropdown = $("#ShadowDropdown");
@@ -119,7 +119,7 @@
             $.ajax({
                 type: "POST",
                 url: "/CustomerList/CreateCustomer",
-                data: '{ID:"' + txtId.val() + '",Emp_Name:"' + txtEmployeeDropdown.val() + '", Client_Name:"' + txtClientDropdown.val() + '",Client_E_mail_Id:"' + txtClientEmailId.val() + '",Reporting_Manager_at_client_place:"' + txtReportingManagerAtClientPlace.val() + '",Shadow:"' + txtShadowDropdown.val() + '",Location:"' + txtLocationDropdown.val() + '",Status:"' + txtStatusDropdown.val() + '"}',
+                data: '{ID:"' + txtId.val() + '",Emp_Name:"' + txtEmployeeDropdown.val() + '", Client_Name:"' + txtClientDropdown.val() + '",Email:"' + Email.val() + '",Reporting_Manager_at_client_place:"' + txtReportingManagerAtClientPlace.val() + '",Shadow:"' + txtShadowDropdown.val() + '",Location:"' + txtLocationDropdown.val() + '",Status:"' + txtStatusDropdown.val() + '"}',
 
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -169,7 +169,7 @@
             cl.ID = row.find(".ID").find("span").html();
             cl.Emp_Name = row.find(".Emp_Name").find("span").html();
             cl.Client_Name = row.find(".Client_Name").find("span").html();
-            cl.Client_E_mail_Id = row.find(".Client_E_mail_Id").find("span").html();
+            cl.Email = row.find(".Email").find("span").html();
             cl.Reporting_Manager_at_client_place = row.find(".Reporting_Manager_at_client_place").find("span").html();
             cl.Cilent_Start_Date = row.find(".Cilent_Start_Date").find("span").html();
             cl.Shadow = row.find(".Shadow").find("span").html();
@@ -474,7 +474,7 @@
                                 @*<p style="display:none;"> @Html.DropDownList("ClientDropdown", ViewBag.ClientList as SelectList)</p>*@
                                 <input disabled type="text" value="@item.Client_Name" style="display:none" />
                             </td>
-                            <td class="Client_E_mail_Id">
+                            <td class="Email">
                                 <span>@item.Email</span>
                                 <input type="text" value="@item.Email" style="display:none" />
                             </td>

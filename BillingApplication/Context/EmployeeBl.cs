@@ -20,10 +20,11 @@ namespace BillingApplication.Context
             {
                 using (var context = new Billing_StagingEntities1())
                 {
-                var employeeList = (from a in context.ImSS_Master_Emp_List
-                                    join b in context.ImSS_Emp_Details on a.Emp_Number equals b.Employee_ID
-                                    select new employee
-                                    {
+                    var employeeList = (from a in context.ImSS_Master_Emp_List
+                                        join b in context.ImSS_Emp_Details on a.Emp_Number equals b.Employee_ID
+                                        select new employee
+                                        {
+                                            ID = a.ID,
                                         Emp_Number = a.Emp_Number,
                                         Emp_Name = a.Emp_Name,
                                         DOJ = a.DOJ,

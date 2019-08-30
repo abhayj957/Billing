@@ -54,7 +54,7 @@ namespace BillingApplication.Controllers
 
         //editing employee details
         [HttpPost]
-        public ActionResult EditList(ImSS_Client_Details cl)
+        public ActionResult EditList(ImSS_Master_Client cl)
         {
             try
             {
@@ -72,26 +72,7 @@ namespace BillingApplication.Controllers
         }
 
 
-        //delete employee details
-        [HttpPost]
-        public ActionResult Delete(int? id)
-        {
-            try
-            {
-
-                List<ImSS_Master_Client> cl = new List<ImSS_Master_Client>();
-                if (id != null)
-                {
-                    cl = CBL.Delete(id);
-                }
-                return Json(cl);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
+        
         //dropdown for employeename
         [HttpGet]
         public ActionResult GetEmployeeNameList()
