@@ -18,6 +18,7 @@ namespace BillingApplication.Context
                 {
                     var CustomerList = (from a in context.ImSS_Master_Client
                                         join b in context.ImSS_Cust_Emp_Details on a.Emp_Name equals b.Emp_Number
+                                        
                                         select new customer
                                         {
                                               ID=a.ID,
@@ -96,11 +97,14 @@ namespace BillingApplication.Context
                     {
                         ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.Emp_Name == cust.Emp_Name select c).FirstOrDefault();
                         UpdateEmployee.Status = "Assigned";
+                        
                     }
                     else
                     {
                         ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.Emp_Name == cust.Emp_Name select c).FirstOrDefault();
                         UpdateEmployee.Status = "Avalible";
+                        ImSS_Cust_Emp_Details Update = (from c in context.ImSS_Cust_Emp_Details where c.Emp_Number == cust.Emp_Name select c).FirstOrDefault();
+                        Update.Cilent_End_Date = DateTime.Now;
                     }
                     context.SaveChanges();
 
