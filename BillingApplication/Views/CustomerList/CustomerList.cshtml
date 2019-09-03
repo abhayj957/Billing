@@ -533,8 +533,13 @@
         //    });
         //});
 
-        function FunctionEdit() {
-            confirm("do you want to edit?");
+        function Change() {
+            confirm("do you want to update the status?");
+        };
+
+
+        function Change1() {
+            confirm("do you want to update the Shadow?");
         };
 
         //function functionupdate() {
@@ -658,15 +663,15 @@
                             </td>
                             <td class="Shadow">
                                 <span>@item.Shadow</span>
-                                <p style="display:none"> @Html.DropDownList("ShadowDropdown", ViewBag.ShadowList as SelectList)</p>
+                                <p style="display:none" onchange="Change1()"> @Html.DropDownList("ShadowDropdown", ViewBag.ShadowList as SelectList)</p>
                            </td>
                             <td class="Location">
                                 <span>@item.Location</span>
-                                <p style="display:none"> @Html.DropDownList("LocationDropdown", ViewBag.LocationList as SelectList)</p>
+                                <p style="display:none" > @Html.DropDownList("LocationDropdown", ViewBag.LocationList as SelectList)</p>
                            </td>
                             <td class="Status">
                                 <span>@item.Status</span>
-                                <p style="display:none" > @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
+                                <p style="display:none" onchange="Change()" > @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
                               </td>
                             
                         </tr>

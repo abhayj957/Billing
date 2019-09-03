@@ -71,7 +71,7 @@
                         <div class="form-group">
                             <label class="col-sm-3">Date Of Joining   <span class="requiredfeild">&#42;</span></label>
                             <div class="col-sm-3">
-                                <input class="form-control" placeholder="Date Of Joining" type="date" id="DateOfJoining">
+                                <input class="form-control" placeholder="Date Of Joining" type="date" id="DateOfJoining" onkeyup="date();">
                                 <span class="error_form" id="DOJ_error_message"></span>
                             </div>
                         </div>
@@ -192,14 +192,20 @@
 <br />
 <br/>
 
-<!--Ajax method used to insert data into database-->
+
 <script>
+    //cancel button in popup
     $("body").on("click", "#btnCancel", function () {
         
             window.location.reload();
     });
 
-    //validation
+    //onclick event in reporting manager
+    function Change() {
+        confirm("do you want to update the Reporting Manager?");
+    };
+
+    //validation & inserting into database
     $(function () {
         $("EmployeeNumber_error_message").hide();
         $("EmployeeName_error_message").hide();
@@ -619,30 +625,6 @@
         });
     });
 
-    ////delete operation
-    //$("body").on("click", "#demoGrid #Delete", function () {
-    //    if (confirm("Do you want to delete this row?")) {
-    //        var row = $(this).closest("tr");
-
-    //        var Emp_Number = row.find(".Emp_Number").find("span").html();
-    //        $.ajax({
-    //            type: "POST",
-    //            url: "/EmployeeList/Delete",
-    //            data: '{Emp_Number: ' + Emp_Number + '}',
-    //            contentType: "application/json; charset=utf-8",
-    //            dataType: "json",
-    //            success: function (response) {
-
-    //                    row.find("#Edit").hide();
-    //                    row.find("#Delete").hide();
-    //                    row.find("span").html('&nbsp;');
-
-    //                window.location.reload();
-    //            }
-    //        });
-    //    }
-    //});
-
     //Cancel event handler.
     $("body").on("click", "#demoGrid #Cancel", function () {
         var row = $(this).closest("tr");
@@ -667,12 +649,25 @@
         $(this).hide();
     });
 
+
+    //ImSS Experiences + Previous Experiences = Total Experiences
     function sum() {
         var txtFirstNumberValue = document.getElementById('PreviousExperiences').value;
         var txtSecondNumberValue = document.getElementById('IMSSExperiences').value;
         var result = parseFloat(txtFirstNumberValue) + parseFloat(txtSecondNumberValue);
         if (!isNaN(result)) {
             document.getElementById('TotalExperiences').value = result;
+        }
+    }
+
+    function date() {
+        var txtDOJ = document.getElementById('DateOfJoining').date;
+        var today = new Date();
+        var txtToday = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var timeDiff = txtToday.getTime() - txtDOJ.getTime();
+        var DaysDiff = timeDiff / (1000 * 3600 * 24);
+        if (!isNaN(DaysDiff)) {
+            document.getElementById('IMSSExperiences').value = result;
         }
     }
 
@@ -895,7 +890,7 @@
 
                             <td class="Reporting">
                                 <span>@item.Reporting</span>
-                                <p style="display:none"> @Html.DropDownList("Reporting", ViewBag.ReportingList as SelectList)</p>
+                                <p style="display:none" onchange="Change()"> @Html.DropDownList("Reporting", ViewBag.ReportingList as SelectList)</p>
                             </td>
                             <td class="Start_Date">
                                 <span>@item.Start_Date</span>
