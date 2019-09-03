@@ -20,11 +20,12 @@ namespace BillingApplication.Controllers
             {
                 List<ImSS_Master_PO> listObj = new List<ImSS_Master_PO>();
                 listObj = PBL.GetPOList();
+                ViewBag.Polist = listObj;
                 ViewBag.clientList = new SelectList(PBL.GetClientList(), "Client_Name", "Client_Name");
                 ViewBag.paymentList = new SelectList(PBL.GetPayment(), "Payment", "Payment");
                 ViewBag.currencyList = new SelectList(PBL.GetCurrency(), "Currency", "Currency");
 
-                return View(listObj);
+                return View();
             }
             catch (Exception e)
             {

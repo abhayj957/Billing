@@ -37,7 +37,6 @@ namespace BillingApplication.DBContexts
         public virtual DbSet<ImSS_Invoice_Master> ImSS_Invoice_Master { get; set; }
         public virtual DbSet<ImSS_Location> ImSS_Location { get; set; }
         public virtual DbSet<ImSS_Master_Emp_List_c10406> ImSS_Master_Emp_List_c10406 { get; set; }
-        public virtual DbSet<ImSS_Master_PO> ImSS_Master_PO { get; set; }
         public virtual DbSet<ImSS_Order_Status> ImSS_Order_Status { get; set; }
         public virtual DbSet<ImSS_Reporting_Head> ImSS_Reporting_Head { get; set; }
         public virtual DbSet<ImSS_Skills_Category> ImSS_Skills_Category { get; set; }
@@ -55,6 +54,7 @@ namespace BillingApplication.DBContexts
         public virtual DbSet<ImSS_Emp_Details> ImSS_Emp_Details { get; set; }
         public virtual DbSet<ImSS_Master_Client> ImSS_Master_Client { get; set; }
         public virtual DbSet<ImSS_Client_Details> ImSS_Client_Details { get; set; }
+        public virtual DbSet<ImSS_Master_PO> ImSS_Master_PO { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

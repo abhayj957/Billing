@@ -131,7 +131,7 @@ namespace BillingApplication.Context
                 using (var context = new Billing_StagingEntities1())
                 {
                     ImSS_Master_PO UpdatePo = (from c in context.ImSS_Master_PO where c.ID == po.ID select c).FirstOrDefault();
-                    UpdatePo.Client_Name = po.Client_Name;
+                    UpdatePo.Client_ID = po.Client_ID;
                     UpdatePo.Project_Name = po.Project_Name;
                     UpdatePo.PO_Number = po.PO_Number;
                     UpdatePo.Point_Of_Contact = po.Point_Of_Contact;

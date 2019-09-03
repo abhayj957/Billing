@@ -25,6 +25,13 @@
             ADD New
         </button>
     </div>
+<style>
+    .error_form {
+        font-size: 15px;
+        font-family: Arial;
+        color: red;
+    }
+</style>
 
     <br />
     <br />
@@ -47,15 +54,17 @@
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-sm-3">Client Name</label>
+                                <label class="col-sm-3">Client Name <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <select class="form-control" id="ClientName" ></select>
+                                    <select class="form-control" id="ClientName"></select>
+                                    <span class="error_form" id="Client_error_message"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3">Project Name</label>
+                                <label class="col-sm-3">Project Name <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="text" id="ProjectName" />
+                                    <input class="form-control" type="text" id="ProjectName" />
+                                    <span class="error_form" id="Name_error_message"></span>
                                 </div>
                             </div>
                         </div>
@@ -63,95 +72,108 @@
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-sm-3">PO Number</label>
+                                <label class="col-sm-3">PO Number <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="text" id="PONumber" />
+                                    <input class="form-control" type="text" id="PONumber" />
+                                    <span class="error_form" id="Po_error_message"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3">Point Of Contact</label>
+                                <label class="col-sm-3">Point Of Contact <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="text" id="PointOfContact" />
+                                    <input class="form-control" type="text" id="PointOfContact" />
+                                    <span class="error_form" id="Contact_error_message"></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-sm-3">Mode Of Payment</label>
+                                <label class="col-sm-3">Mode Of Payment <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <select class="form-control" id="ModeOfPayment" ></select>
+                                    <select class="form-control" id="ModeOfPayment"></select>
+                                    <span class="error_form" id="pay_error_message"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3">Currency</label>
+                                <label class="col-sm-3">Currency <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <select class="form-control" id="Currency" ></select>
+                                    <select class="form-control" id="Currency"></select>
+                                    <span class="error_form" id="Currency_error_message"></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-sm-3">Start Date</label>
+                                <label class="col-sm-3">Duration <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="date" id="StartDate">
-                                    
+                                    <input class="form-control" type="text" id="Duration" />
+                                    <span class="error_form" id="Duration_error_message"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3">End Date</label>
+                                <label class="col-sm-3">Start Date <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="date" id="EndDate" />
+                                    <input class="form-control" type="date" id="StartDate">
+                                    <span class="error_form" id="Start_error_message"></span>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="display: none;" class="col-sm-3">End Date</label>
+                                <div class="col-sm-3">
+                                    <input style="display: none;" class="form-control" type="date" id="EndDate" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-sm-3">Initial Amount</label>
+                                <label class="col-sm-3">Initial Amount <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="text" id="InitialAmount" />
+                                    <input class="form-control" type="text" id="InitialAmount" />
+                                    <span class="error_form" id="inital_error_message"></span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3">Duration</label>
+                                <label class="col-sm-3">Status <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="text" id="Duration" />
+                                    <input class="form-control" type="text" id="Status" />
+                                    <span class="error_form" id="Status_error_message"></span>
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-sm-3">Status</label>
+                                <label class="col-sm-3">Total Amount <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control"  type="text" id="Status" />
+                                    <input class="form-control" disabled type="text" id="TotalAmount" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Close Date <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="date" id="CloseDate" />
+                                    <span class="error_form" id="Close_error_message"></span>
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="form-group">
-                                <label class="col-sm-3">Total Amount</label>
+                                <label class="col-sm-3">Upload The PO <span class="requiredfeild">&#42;</span></label>
                                 <div class="col-sm-3">
-                                    <input class="form-control" disabled  type="text" id="TotalAmount" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3">Close Date</label>
-                                <div class="col-sm-3">
-                                    <input class="form-control"  type="date" id="CloseDate" />
+                                    <input name="datafile" type="file"  size="40" id="Upload">
+                                    <span class="error_form" id="Upload_error_message"></span>
                                 </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" id="btnSave" class="btn btn-outline-success">Save</button>
-                    <button type="button" class="btn btn-default pull" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="btnCancel" class="btn btn-default pull" data-dismiss="modal">Cancel</button>
 
                 </div>
             </div>
@@ -159,50 +181,371 @@
     </div>
 
     <script>
-        //insert
-        $("body").on("click", "#btnSave", function () {
-            var txtClientName = $("#ClientName");
-            var txtProjectName = $("#ProjectName");
-            var txtPONumber = $("#PONumber");
-            var txtPointOfContact = $("#PointOfContact");
-            var txtModeOfPayment = $("#ModeOfPayment");
-            var txtCurrency = $("#Currency");
-            var txtStartDate = $("#StartDate");
-            var txtEndDate = $("#EndDate");
-            var txtInitialAmount = $("#InitialAmount");
-            var txtDuration = $("#Duration");
-            //var txtRenewedAmount = $("#RenewedAmount");
-            //var txtRenewedDate = $("#RenewedDate");
-            //var txtParent = $("#Parent");
-            var txtStatus = $("#Status");
-            var txtTotalAmount = $("#TotalAmount");
-            var txtCloseDate = $("#CloseDate");
-            $.ajax({
-                type: "POST",
-                url: "/POMaster/InsertPO",
-                data: '{Client_Name:"' + txtClientName.val() +'",Project_Name:"' + txtProjectName.val() +
-                '",PO_Number:"' + txtPONumber.val() +
-                '",Point_Of_Contact:"' + txtPointOfContact.val() +
-                '",Mode_Of_Payment:"' + txtModeOfPayment.val() +
-                '",Currency:"' + txtCurrency.val() +
-                '",PO_StartDate:"' + txtStartDate.val() +
-                '",PO_EndDate:"' + txtEndDate.val() +
-                '",PO_Initial_Amount:"' + txtInitialAmount.val() +
-                '",PO_Duration:"' + txtDuration.val() +
-                //'",PO_Renewed_Amount:0 ,PO_Renewed_Date:null ,Parent_PO:0 "' +
-                '",PO_Status:"' + txtStatus.val() +
-                '",PO_Total_Amount_INR:"' + txtTotalAmount.val() +
-                '",PO_Close_Date:"' + txtCloseDate.val() + '"}',
+        //cancel button
+        $("body").on("click", "#btnCancel", function () {
 
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    window.location.reload();
+            window.location.reload();
+        });
+        //insert
+        $(function () {
+            $("Client_error_message").hide();
+            $("Name_error_message").hide();
+            $("Po_error_message").hide();
+            $("Contact_error_message").hide();
+            $("pay_error_message").hide();
+            $("Currency_error_message").hide();
+            $("Duration_error_message").hide();
+            $("Start_error_message").hide();
+            $("inital_error_message").hide();
+            $("Status_error_message").hide();
+            $("Close_error_message").hide();
+            $("Upload_error_message").hide();
+
+            var Client_error_message = false;
+            var Name_error_message = false;
+            var Po_error_message = false;
+            var Contact_error_message = false;
+            var pay_error_message = false;
+            var Currency_error_message = false;
+            var Duration_error_message = false;
+            var Start_error_message = false;
+            var inital_error_message = false;
+            var Status_error_message = false;
+            var Close_error_message = false;
+            var Upload_error_message = false;
+
+            $("#ClientName").focusout(function () {
+
+                check_ClientName();
+
+            });
+
+            $("#ProjectName").focusout(function () {
+
+                check_ProjectName();
+
+            });
+
+            $("#PONumber").focusout(function () {
+
+                check_PONumber();
+
+            });
+
+
+            $("#PointOfContact").focusout(function () {
+
+                check_PointOfContact();
+
+            });
+
+
+            $("#ModeOfPayment").focusout(function () {
+
+                check_ModeOfPayment();
+
+            });
+
+            $("#Currency").focusout(function () {
+
+                check_Currency();
+
+            });
+
+            $("#Duration").focusout(function () {
+
+                check_Duration();
+
+            });
+
+            $("#StartDate").focusout(function () {
+
+                check_StartDate();
+
+            });
+
+            $("#InitialAmount").focusout(function () {
+
+                check_InitialAmount();
+
+            });
+
+
+
+            $("#Status").focusout(function () {
+
+                check_Status();
+
+            });
+
+            $("#CloseDate").focusout(function () {
+
+                check_CloseDate();
+
+            });
+            $("#Upload").focusout(function () {
+
+                check_Upload();
+
+            });
+
+            function check_ClientName() {
+
+                var ClientName_length = $("#ClientName").val();
+
+                if (ClientName_length == 0) {
+                    $("#Client_error_message").html("Select the Cilent Name ");
+                    $("#Client_error_message").show();
+                    error_ClientName = true;
+                } else {
+                    $("#Client_error_message").hide();
+                }
+
+            }
+
+            function check_ProjectName() {
+
+                var ProjectName_length = $("#ProjectName").val().length;
+
+                if (ProjectName_length < 2 || ProjectName_length > 30) {
+                    $("#Name_error_message").html(" Project Name  Should be between 2-30 characters");
+                    $("#Name_error_message").show();
+                    error_ProjectName = true;
+                } else {
+                    $("#Name_error_message").hide();
+                }
+
+            }
+
+            function check_PONumber() {
+
+                var PONumber_length = $("#PONumber").val().length;
+
+                if (PONumber_length == " ") {
+                    $("#Po_error_message").html("Invalid PO Number ");
+                    $("#Po_error_message").show();
+                    error_PONumber = true;
+                } else {
+                    $("#Po_error_message").hide();
+                }
+
+            }
+
+            function check_PointOfContact() {
+
+                var PointOfContact_length = $("#PointOfContact").val().length;
+
+                if (PointOfContact_length == " ") {
+                    $("#Contact_error_message").html("Invalid Point of Contact ");
+                    $("#Contact_error_message").show();
+                    error_PointOfContact = true;
+                } else {
+                    $("#Contact_error_message").hide();
+                }
+
+            }
+
+            function check_ModeOfPayment() {
+
+                var ModeOfPayment_length = $("#ModeOfPayment").val();
+
+                if (ModeOfPayment_length == 0) {
+                    $("#pay_error_message").html("Select the mode of payment");
+                    $("#pay_error_message").show();
+                    error_ModeOfPayment = true;
+                } else {
+                    $("#pay_error_message").hide();
+                }
+
+            }
+
+            function check_Currency() {
+
+                var Currency_length = $("#Currency").val();
+
+                if (Currency_length == 0) {
+                    $("#Currency_error_message").html("Select the Currency Used");
+                    $("#Currency_error_message").show();
+                    error_Currency = true;
+                } else {
+                    $("#Currency_error_message").hide();
+                }
+
+            }
+
+            function check_Duration() {
+
+                var Duration_length = $("#Duration").val().length;
+
+                if (Duration_length == " ") {
+                    $("#Duration_error_message").html("Invalid Duration");
+                    $("#Duration_error_message").show();
+                    error_Duration = true;
+                } else {
+                    $("#Duration_error_message").hide();
+                }
+
+            }
+
+            function check_StartDate() {
+
+                var StartDate_length = $("#StartDate").val().length;
+
+                if (StartDate_length == " ") {
+                    $("#Start_error_message").html("Invalid Date");
+                    $("#Start_error_message").show();
+                    error_StartDate = true;
+                } else {
+                    $("#Start_error_message").hide();
+                }
+
+            }
+
+            function check_InitialAmount() {
+
+                var InitialAmount_length = $("#InitialAmount").val().length;
+
+                if (InitialAmount_length == " ") {
+                    $("#inital_error_message").html("Invalid Amount ");
+                    $("#inital_error_message").show();
+                    error_InitialAmount = true;
+                } else {
+                    $("#inital_error_message").hide();
+                }
+
+            }
+
+            function check_Status() {
+
+                var Status_Lenght = $("#Status").val().length;
+
+                if (Status_Lenght == " ") {
+                    $("#Status_error_message").html("Invalid Status");
+                    $("#Status_error_message").show();
+                    error_Status = true;
+                } else {
+                    $("#Status_error_message").hide();
+                }
+
+            }
+
+            function check_CloseDate() {
+
+                var CloseDate_length = $("#CloseDate").val().length;
+
+                if (CloseDate_length == " ") {
+                    $("#Close_error_message").html("Invalid Date");
+                    $("#Close_error_message").show();
+                    error_CloseDate = true;
+                } else {
+                    $("#Close_error_message").hide();
+                }
+
+            }
+
+            function check_Upload() {
+
+                var Upload_length = $("#Upload").size();
+
+                if (Upload_length == " ") {
+                    $("#Upload_error_message").html("Upload a Valid File ");
+                    $("#Upload_error_message").show();
+                    error_Upload = true;
+                } else {
+                    $("#Upload_error_message").hide();
+                }
+
+            }
+
+            $("body").on("click", "#btnSave", function () {
+                error_ClientName = false;
+                error_ProjectName = false;
+                error_PONumber = false;
+                error_PointOfContact = false;
+                error_ModeOfPayment = false;
+                error_Currency = false;
+                error_Duration = false;
+                error_StartDate = false;
+                error_InitialAmount = false;
+                error_Status = false;
+                error_CloseDate = false;
+                error_Upload = false;
+
+                check_ClientName();
+                check_ProjectName();
+                check_PONumber();
+                check_PointOfContact();
+                check_ModeOfPayment();
+                check_Currency();
+                check_Duration();
+                check_StartDate();
+                check_InitialAmount();
+                check_Status();
+                check_CloseDate();
+                check_Upload();
+
+                if (error_ClientName == false &&
+                    error_ProjectName == false &&
+                    error_PONumber == false &&
+                    error_PointOfContact == false &&
+                    error_ModeOfPayment == false &&
+                    error_Currency == false &&
+                    error_Duration == false &&
+                    error_StartDate == false &&
+                    error_InitialAmount == false &&
+                    error_Status == false &&
+                    error_CloseDate == false &&
+                    error_Upload == false
+                ) {
+                    var txtClientName = $("#ClientName");
+                    var txtProjectName = $("#ProjectName");
+                    var txtPONumber = $("#PONumber");
+                    var txtPointOfContact = $("#PointOfContact");
+                    var txtModeOfPayment = $("#ModeOfPayment");
+                    var txtCurrency = $("#Currency");
+                    var txtStartDate = $("#StartDate");
+                    var txtEndDate = $("#EndDate");
+                    var txtInitialAmount = $("#InitialAmount");
+                    var txtDuration = $("#Duration");
+                    //var txtRenewedAmount = $("#RenewedAmount");
+                    //var txtRenewedDate = $("#RenewedDate");
+                    //var txtParent = $("#Parent");
+                    var txtStatus = $("#Status");
+                    var txtTotalAmount = $("#TotalAmount");
+                    var txtCloseDate = $("#CloseDate");
+                    var txtFileData = $("#Upload");
+                    $.ajax({
+                        type: "POST",
+                        url: "/POMaster/InsertPO",
+                        data: '{Client_ID:"' + txtClientName.val() + '",Project_Name:"' + txtProjectName.val() +
+                        '",PO_Number:"' + txtPONumber.val() +
+                        '",Point_Of_Contact:"' + txtPointOfContact.val() +
+                        '",Mode_Of_Payment:"' + txtModeOfPayment.val() +
+                        '",Currency:"' + txtCurrency.val() +
+                        '",PO_StartDate:"' + txtStartDate.val() +
+                        '",PO_EndDate:"' + txtEndDate.val() +
+                        '",PO_Initial_Amount:"' + txtInitialAmount.val() +
+                        '",PO_Duration:"' + txtDuration.val() +
+                        //'",PO_Renewed_Amount:0 ,PO_Renewed_Date:null ,Parent_PO:0 "' +
+                        '",PO_Status:"' + txtStatus.val() +
+                        '",PO_Total_Amount_INR:"' + txtTotalAmount.val() +
+                        '",PO_Close_Date:"' + txtCloseDate.val() +
+                        '",FileData:"' + txtFileData.val() + '"}',
+
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            window.location.reload();
+                        }
+
+                    });
+                } else {
+                    return false;
                 }
 
             });
-        });
 
+        });
         //delete operation
         $("body").on("click", "#demoGrid #Delete", function () {
             if (confirm("Do you want to delete this row?")) {
@@ -263,7 +606,7 @@
 
             var po = {};
             po.ID = row.find(".ID").find("span").html();
-            po.Client_Name = row.find(".Client_Name").find("span").html();
+            po.Client_ID = row.find(".Client_ID").find("span").html();
             po.Project_Name = row.find(".Project_Name").find("span").html();
             po.PO_Number = row.find(".PO_Number").find("span").html();
             po.Point_Of_Contact = row.find(".Point_Of_Contact").find("span").html();
@@ -295,15 +638,17 @@
         //dropdown menu for cilent
         $(document).ready(function () {
             $(window).load(function () {
+                var ClientName = $("#ClientName");
+                ClientName.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
                 $.ajax({
                     url: "/POMaster/GetClientList",
                     type: "Get",
-                    success: function (data) {
+                    success: function (response) {
 
-                        for (var i = 0; i < data.length; i++) {
-                            var opt = new Option(data[i].Client_Name, data[i].Client_Name);
-                            $('#ClientName').append(opt);
-                        }
+                        ClientName.empty().append('<option selected="selected" value="0">Select</option>');
+                        $.each(response, function () {
+                            ClientName.append($("<option></option>").val(this['Client_Name']).html(this['Client_Name']));
+                        });
                     }
                 });
             });
@@ -337,42 +682,40 @@
         //dropdown menu for currency
         $(document).ready(function () {
             $(window).load(function () {
+                var Currency = $("#Currency");
+                Currency.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
                 $.ajax({
                     url: "/POMaster/GetCurrencyRate",
                     type: "Get",
-                    success: function (data) {
+                    success: function (response) {
 
-                        for (var i = 0; i < data.length; i++) {
-                            var opt = new Option(data[i].Currency, data[i].Currency);
-                            $('#Currency').append(opt);
-                        }
-
-
+                        Currency.empty().append('<option selected="selected" value="0">Select</option>');
+                        $.each(response, function () {
+                            Currency.append($("<option></option>").val(this['Currency']).html(this['Currency']));
+                        });
                     }
-
                 });
-
             });
         });
-
-        //dropdown menu for cilent
+        //dropdown menu for payment
+        
         $(document).ready(function () {
             $(window).load(function () {
+                var Payment = $("#ModeOfPayment");
+                Payment.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
                 $.ajax({
                     url: "/POMaster/GetPaymentMode",
                     type: "Get",
-                    success: function (data) {
-                        for (var i = 0; i < data.length; i++) {
-                            var opt = new Option(data[i].Payment, data[i].Payment);
-                            $('#ModeOfPayment').append(opt);
-                        }
+                    success: function (response) {
+
+                        Payment.empty().append('<option selected="selected" value="0">Select</option>');
+                        $.each(response, function () {
+                            Payment.append($("<option></option>").val(this['Payment']).html(this['Payment']));
+                        });
                     }
-
                 });
-
             });
         });
-
         //searching box and paging
         $(document).ready(function () {
             $('#demoGrid').DataTable({
@@ -407,10 +750,11 @@
                             <th>PO Status</th>
                             <th>Total Amount</th>
                             <th>Close Date</th>
+                            <th>File</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @foreach (var item in ViewBag.Polist)
             {
                             <tr>
                                 <td>
@@ -421,11 +765,11 @@
                                     @*<a id="Delete" class="glyphicon glyphicon-trash" href="javascript:;"></a>*@
                                 </td>
                                 <td style="display:none;" class="ID">
-                                    <span>@item.ID</span>
+                                    <span style="display:none;">@item.ID</span>
                                 </td>
                                 <td class="Client_Name">
                                     <p style="display:none;"> @Html.DropDownList("clientList", ViewBag.clientList as SelectList)</p>
-                                    <span>@item.Client_Name</span>
+                                    <span>@item.Client_ID</span>
                                 </td>
                                 <td class="Project_Name">
                                     <span>@item.Project_Name</span>
@@ -479,6 +823,11 @@
                                     <span>@Convert.ToString(string.Format("{0:dd-MMM-yyyy}", item.PO_Close_Date))</span>
                                     <input type="text" value="@item.PO_Close_Date" style="display:none" />
                                 </td>
+                                <td class="FileDate">
+                                    <span>@item.FileData</span>
+                                    <input type="text" value="@item.FileData" style="display:none" />
+                                </td>
+
                             </tr>
                         }
                     </tbody>
