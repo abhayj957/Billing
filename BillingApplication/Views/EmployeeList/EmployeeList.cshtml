@@ -198,7 +198,13 @@
 
     //onchange
     function change() {
-        confrim("do you agree to update the reporting manager?");
+        if (r == true) {
+
+        }
+        else
+        {
+
+        }
     };
 
     //validation and insertion
@@ -558,16 +564,31 @@
     $("body").on("click", "#demoGrid #Edit", function () {
         var row = $(this).closest("tr");
         $("td", row).each(function () {
-            if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
-                $(this).find("input").show();
-                $(this).find("select").show();
-                $(this).find("p").show();
-                $(this).find("span").hide();
+            if ($(this).find('input')) {
+                if ($(this).find('input').attr('type') === 'date') {
+                    var dt = new Date($(this).find('span').html());
+                    var day = ("0" + dt.getDate()).slice(-2);
+                    var month = ("0" + (dt.getMonth() + 1)).slice(-2);
+                    var dt_val = dt.getFullYear() + "-" + (month) + "-" + (day);
+                    $(this).find('input').val(dt_val);
+                    $(this).find('input').show();
+                } else {
+                    $(this).find('input').val($(this).find('span').html());
+                    $(this).find('input').show();
+                }
+                $(this).find('span').hide();
+            }
+            if ($(this).find('select')) {
+                $(this).find('select').val($(this).find('span').html());
+                $(this).find('select').show();
+                $(this).find('p').show();
+                $(this).find('span').hide();
             }
         });
         row.find("#Update").show();
         row.find("#Cancel").show();
         row.find("#Delete").hide();
+        row.find(".ID").find('span').show();
         $(this).hide();
     });
 

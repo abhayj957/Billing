@@ -256,6 +256,9 @@
     <Compile Include="DBContexts\ImSS_Payment_Mode.cs">
       <DependentUpon>DBContexts.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBContexts\ImSS_PO_Duration.cs">
+      <DependentUpon>DBContexts.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContexts\ImSS_Reporting_Head.cs">
       <DependentUpon>DBContexts.tt</DependentUpon>
     </Compile>

@@ -64,6 +64,23 @@ namespace BillingApplication.Context
             }
         }
 
+        //ling query used to get currency(ImSS_Curr)
+        public List<ImSS_PO_Duration> GetDuration()
+        {
+            try
+            {
+                using (var context = new Billing_StagingEntities1())
+                {
+                    var list = (from a in context.ImSS_PO_Duration select a).ToList();
+                    return list;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
 
         //ling query used to get payment(ImSS_Payment_Mode)
         public List<ImSS_Payment_Mode> GetPayment()

@@ -24,7 +24,7 @@ namespace BillingApplication.Controllers
                 ViewBag.clientList = new SelectList(PBL.GetClientList(), "Client_Name", "Client_Name");
                 ViewBag.paymentList = new SelectList(PBL.GetPayment(), "Payment", "Payment");
                 ViewBag.currencyList = new SelectList(PBL.GetCurrency(), "Currency", "Currency");
-
+                ViewBag.durationList = new SelectList(PBL.GetDuration(), "Month", "Month");
                 return View();
             }
             catch (Exception e)
@@ -64,8 +64,23 @@ namespace BillingApplication.Controllers
                 throw e;
             }
         }
-
-        //dropdown for Currency
+        
+        //dropdown duration
+        [HttpGet]
+        public ActionResult GetDuration()
+        {
+            try
+            {
+                List<ImSS_PO_Duration> list1 = new List<ImSS_PO_Duration>();
+                list1 = PBL.GetDuration();
+                return Json(list1, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        //dropdown for payment
         [HttpGet]
         public ActionResult GetPaymentMode()
         {

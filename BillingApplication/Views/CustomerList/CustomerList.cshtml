@@ -300,16 +300,31 @@
     $("body").on("click", "#demoGrid1 #Edit", function () {
         var row = $(this).closest("tr");
         $("td", row).each(function () {
-            if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
-                $(this).find("input").show();
-                $(this).find("select").show();
-                $(this).find("p").show();
-                $(this).find("span").hide();
+            if ($(this).find('input')) {
+                if ($(this).find('input').attr('type') === 'date') {
+                    var dt = new Date($(this).find('span').html());
+                    var day = ("0" + dt.getDate()).slice(-2);
+                    var month = ("0" + (dt.getMonth() + 1)).slice(-2);
+                    var dt_val = dt.getFullYear() + "-" + (month) + "-" + (day);
+                    $(this).find('input').val(dt_val);
+                    $(this).find('input').show();
+                } else {
+                    $(this).find('input').val($(this).find('span').html());
+                    $(this).find('input').show();
+                }
+                $(this).find('span').hide();
+            }
+            if ($(this).find('select')) {
+                $(this).find('select').val($(this).find('span').html());
+                $(this).find('select').show();
+                $(this).find('p').show();
+                $(this).find('span').hide();
             }
         });
         row.find("#Update").show();
         row.find("#Cancel").show();
         row.find("#Delete").hide();
+        row.find(".ID").find('span').show();
         $(this).hide();
     });
 
@@ -504,11 +519,22 @@
     });
     $('#demoGrid1').dataTable({});
 
-    function change() {
-        confirm("do you agree to update the shadow?");
+    function change1() {
+        var r = confirm("Do you agree to update the status?");
+        if (r == true)
+        {
+            
+            return true;
+        }
+        else
+        {
+            
+            return false;
+        }
+        
     };
 
-    function change1() {
+    function change() {
         alert("do you agree to update the status?");
     };
 </script>
@@ -581,7 +607,7 @@
                         </td>
                         <td class="Status">
                             <span>@item.Status</span>
-                            <p style="display:none" onchange="change1()"> @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
+                            <p style="display:none" id ="status" onchange="change1();"> @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
                         </td>
 
                     </tr>
