@@ -25,6 +25,7 @@ namespace BillingApplication.Controllers
                 ViewBag.paymentList = new SelectList(PBL.GetPayment(), "Payment", "Payment");
                 ViewBag.currencyList = new SelectList(PBL.GetCurrency(), "Currency", "Currency");
                 ViewBag.durationList = new SelectList(PBL.GetDuration(), "Month", "Month");
+                ViewBag.pocList = new SelectList(PBL.GetPOContact(), "Point_Of_Contact", "Point_Of_Contact");
                 return View();
             }
             catch (Exception e)
@@ -73,6 +74,22 @@ namespace BillingApplication.Controllers
             {
                 List<ImSS_PO_Duration> list1 = new List<ImSS_PO_Duration>();
                 list1 = PBL.GetDuration();
+                return Json(list1, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        //dropdown poc
+        [HttpGet]
+        public ActionResult GetPOC()
+        {
+            try
+            {
+                List<ImSS_POC> list1 = new List<ImSS_POC>();
+                list1 = PBL.GetPOContact();
                 return Json(list1, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

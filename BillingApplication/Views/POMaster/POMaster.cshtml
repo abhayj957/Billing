@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <label class="col-sm-3">Point Of Contact <span class="requiredfeild">&#42;</span></label>
                             <div class="col-sm-3">
-                                <input class="form-control" type="text" id="PointOfContact" />
+                                <select class="form-control" id="PointOfContact" ></select>
                                 <span class="error_form" id="Contact_error_message"></span>
                             </div>
                         </div>
@@ -766,6 +766,31 @@
             });
         });
     });
+
+
+    //dropdown menu for pocontact
+    $(document).ready(function () {
+        $(window).load(function () {
+            var PointOfContact = $("#PointOfContact");
+            var PointOfContact1 = $("#PointOfContact1");
+            PointOfContact.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+            PointOfContact.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+            $.ajax({
+                url: "/POMaster/GetPOC",
+                type: "Get",
+                success: function (response) {
+
+                    PointOfContact.empty().append('<option selected="selected" value="0">Select</option>');
+                    PointOfContact1.empty().append('<option selected="selected" value="0">Select</option>');
+                    $.each(response, function () {
+                        PointOfContact.append($("<option></option>").val(this['Point_Of_Contact']).html(this['Point_Of_Contact']));
+                        PointOfContact1.append($("<option></option>").val(this['Point_Of_Contact']).html(this['Point_Of_Contact']));
+                    });
+                }
+            });
+        });
+    });
+
     //searching box and paging
     $(document).ready(function () {
         $('#demoGrid').DataTable({
@@ -793,6 +818,7 @@
                         <th>Client Name</th>
                         <th>Project Name</th>
                         <th>PO Number</th>
+                        <th>Master PO</th>
                         <th>Point Of Contact</th>
                         <th>Mode Of Payment</th>
                         <th>Currency</th>
@@ -834,9 +860,13 @@
                                 <span>@item.PO_Number</span>
                                 <input type="text" value="@item.PO_Number" style="display:none" />
                             </td>
+                            <td class="Point_Of_Parent">
+                                <span>@item.Parent_PO</span>
+                                <input type="text" value="@item.Parent_PO" style="display:none" />
+                            </td>
                             <td class="Point_Of_Contact">
+                                <p style="display:none;"> @Html.DropDownList("pocList", ViewBag.clientList as SelectList)</p>
                                 <span>@item.Point_Of_Contact</span>
-                                <input type="text" value="@item.Point_Of_Contact" style="display:none" />
                             </td>
                             <td class="Mode_Of_Payment">
                                 <span>@item.Mode_Of_Payment</span>
@@ -935,7 +965,7 @@
                         <div class="form-group">
                             <label class="col-sm-3">Point Of Contact <span class="requiredfeild">&#42;</span></label>
                             <div class="col-sm-3">
-                                <input class="form-control" type="text" id="PointOfContact" />
+                                <select class="form-control" id="PointOfContact1"></select>
                                 <span class="error_form" id="Contact_error_message"></span>
                             </div>
                         </div>

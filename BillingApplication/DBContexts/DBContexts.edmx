@@ -298,6 +298,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Month" Type="int" />
         </EntityType>
+        <EntityType Name="ImSS_POC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Point_Of_Contact" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="ImSS_Reporting_Head">
           <Key>
             <PropertyRef Name="ID" />
@@ -415,6 +422,7 @@
           <EntitySet Name="ImSS_Order_Status" EntityType="Self.ImSS_Order_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImSS_Payment_Mode" EntityType="Self.ImSS_Payment_Mode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImSS_PO_Duration" EntityType="Self.ImSS_PO_Duration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImSS_POC" EntityType="Self.ImSS_POC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImSS_Reporting_Head" EntityType="Self.ImSS_Reporting_Head" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImSS_Shadow" EntityType="Self.ImSS_Shadow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImSS_Skills_Category" EntityType="Self.ImSS_Skills_Category" Schema="dbo" store:Type="Tables" />
@@ -699,6 +707,7 @@
           <EntitySet Name="ImSS_Client_Details" EntityType="Billing_StagingModel.ImSS_Client_Details" />
           <EntitySet Name="ImSS_Master_PO" EntityType="Billing_StagingModel.ImSS_Master_PO" />
           <EntitySet Name="ImSS_PO_Duration" EntityType="Billing_StagingModel.ImSS_PO_Duration" />
+          <EntitySet Name="ImSS_POC" EntityType="Billing_StagingModel.ImSS_POC" />
         </EntityContainer>
         <EntityType Name="ImSS_Currency">
           <Key>
@@ -1050,6 +1059,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Month" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ImSS_POC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Point_Of_Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1485,6 +1501,14 @@
               <MappingFragment StoreEntitySet="ImSS_PO_Duration">
                 <ScalarProperty Name="Month" ColumnName="Month" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImSS_POC">
+            <EntityTypeMapping TypeName="Billing_StagingModel.ImSS_POC">
+              <MappingFragment StoreEntitySet="ImSS_POC">
+                <ScalarProperty Name="Point_Of_Contact" ColumnName="Point_Of_Contact" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

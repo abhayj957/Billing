@@ -56,6 +56,7 @@ namespace BillingApplication.DBContexts
         public virtual DbSet<ImSS_Client_Details> ImSS_Client_Details { get; set; }
         public virtual DbSet<ImSS_Master_PO> ImSS_Master_PO { get; set; }
         public virtual DbSet<ImSS_PO_Duration> ImSS_PO_Duration { get; set; }
+        public virtual DbSet<ImSS_POC> ImSS_POC { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
