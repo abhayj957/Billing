@@ -20,11 +20,13 @@ namespace BillingApplication.Controllers
             {
                 List<ImSS_Master_PO> listObj = new List<ImSS_Master_PO>();
                 listObj = PBL.GetPOList();
+                ViewBag.Polist = listObj;
                 ViewBag.clientList = new SelectList(PBL.GetClientList(), "Client_Name", "Client_Name");
                 ViewBag.paymentList = new SelectList(PBL.GetPayment(), "Payment", "Payment");
                 ViewBag.currencyList = new SelectList(PBL.GetCurrency(), "Currency", "Currency");
-
-                return View(listObj);
+                ViewBag.durationList = new SelectList(PBL.GetDuration(), "Month", "Month");
+                ViewBag.pocList = new SelectList(PBL.GetPOContact(), "Point_Of_Contact", "Point_Of_Contact");
+                return View();
             }
             catch (Exception e)
             {
@@ -63,8 +65,39 @@ namespace BillingApplication.Controllers
                 throw e;
             }
         }
+        
+        //dropdown duration
+        [HttpGet]
+        public ActionResult GetDuration()
+        {
+            try
+            {
+                List<ImSS_PO_Duration> list1 = new List<ImSS_PO_Duration>();
+                list1 = PBL.GetDuration();
+                return Json(list1, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
-        //dropdown for Currency
+        //dropdown poc
+        [HttpGet]
+        public ActionResult GetPOC()
+        {
+            try
+            {
+                List<ImSS_POC> list1 = new List<ImSS_POC>();
+                list1 = PBL.GetPOContact();
+                return Json(list1, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        //dropdown for payment
         [HttpGet]
         public ActionResult GetPaymentMode()
         {

@@ -15,7 +15,7 @@ namespace BillingApplication.DBContexts
     public partial class ImSS_Master_PO
     {
         public int ID { get; set; }
-        public string Client_Name { get; set; }
+        public string Client_ID { get; set; }
         public string Project_Name { get; set; }
         public string PO_Number { get; set; }
         public string Point_Of_Contact { get; set; }
@@ -31,5 +31,6 @@ namespace BillingApplication.DBContexts
         public string PO_Status { get; set; }
         public Nullable<decimal> PO_Total_Amount_INR { get; set; }
         public Nullable<System.DateTime> PO_Close_Date { get; set; }
+        public string FileData { get; set; }
     }
 }
