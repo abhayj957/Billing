@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "POMaster";
 }
-
+<div style="left:10px;">
 <!--header name -->
 <section class="content-header">
     <h1 style="position:fixed;">
@@ -164,7 +164,6 @@
                             <label class="col-sm-3">Upload The PO <span class="requiredfeild">&#42;</span></label>
                             <div class="col-sm-3">
                                 <input name="datafile" type="file" size="40" id="Upload">
-                                <span class="error_form" id="Upload_error_message"></span>
                             </div>
                         </div>
                     </div>
@@ -187,316 +186,294 @@
         window.location.reload();
     });
     //insert
-    $(function () {
-        $("Client_error_message").hide();
-        $("Name_error_message").hide();
-        $("Po_error_message").hide();
-        $("Contact_error_message").hide();
-        $("pay_error_message").hide();
-        $("Currency_error_message").hide();
-        $("Duration_error_message").hide();
-        $("Start_error_message").hide();
-        $("inital_error_message").hide();
-        $("Status_error_message").hide();
-        $("Close_error_message").hide();
-        $("Upload_error_message").hide();
+    //$(function () {
+    //    $("Client_error_message").hide();
+    //    $("Name_error_message").hide();
+    //    $("Po_error_message").hide();
+    //    $("Contact_error_message").hide();
+    //    $("pay_error_message").hide();
+    //    $("Currency_error_message").hide();
+    //    $("Duration_error_message").hide();
+    //    $("Start_error_message").hide();
+    //    $("inital_error_message").hide();
+    //    $("Status_error_message").hide();
+    //    $("Close_error_message").hide();
 
-        var Client_error_message = false;
-        var Name_error_message = false;
-        var Po_error_message = false;
-        var Contact_error_message = false;
-        var pay_error_message = false;
-        var Currency_error_message = false;
-        var Duration_error_message = false;
-        var Start_error_message = false;
-        var inital_error_message = false;
-        var Status_error_message = false;
-        var Close_error_message = false;
-        var Upload_error_message = false;
+    //    var Client_error_message = false;
+    //    var Name_error_message = false;
+    //    var Po_error_message = false;
+    //    var Contact_error_message = false;
+    //    var pay_error_message = false;
+    //    var Currency_error_message = false;
+    //    var Duration_error_message = false;
+    //    var Start_error_message = false;
+    //    var inital_error_message = false;
+    //    var Status_error_message = false;
+    //    var Close_error_message = false;
 
-        $("#ClientName").focusout(function () {
+    //    $("#ClientName").focusout(function () {
 
-            check_ClientName();
+    //        check_ClientName();
 
-        });
+    //    });
 
-        $("#ProjectName").focusout(function () {
+    //    $("#ProjectName").focusout(function () {
 
-            check_ProjectName();
+    //        check_ProjectName();
 
-        });
+    //    });
 
-        $("#PONumber").focusout(function () {
+    //    $("#PONumber").focusout(function () {
 
-            check_PONumber();
+    //        check_PONumber();
 
-        });
+    //    });
 
 
-        $("#PointOfContact").focusout(function () {
+    //    $("#PointOfContact").focusout(function () {
 
-            check_PointOfContact();
+    //        check_PointOfContact();
 
-        });
+    //    });
 
 
-        $("#ModeOfPayment").focusout(function () {
+    //    $("#ModeOfPayment").focusout(function () {
 
-            check_ModeOfPayment();
+    //        check_ModeOfPayment();
 
-        });
+    //    });
 
-        $("#Currency").focusout(function () {
+    //    $("#Currency").focusout(function () {
 
-            check_Currency();
+    //        check_Currency();
 
-        });
+    //    });
 
-        $("#Duration").focusout(function () {
+    //    $("#Duration").focusout(function () {
 
-            check_Duration();
+    //        check_Duration();
 
-        });
+    //    });
 
-        $("#StartDate").focusout(function () {
+    //    $("#StartDate").focusout(function () {
 
-            check_StartDate();
+    //        check_StartDate();
 
-        });
+    //    });
 
-        $("#InitialAmount").focusout(function () {
+    //    $("#InitialAmount").focusout(function () {
 
-            check_InitialAmount();
+    //        check_InitialAmount();
 
-        });
+    //    });
 
 
 
-        $("#Status").focusout(function () {
+    //    $("#Status").focusout(function () {
 
-            check_Status();
+    //        check_Status();
 
-        });
+    //    });
 
-        $("#CloseDate").focusout(function () {
+    //    $("#CloseDate").focusout(function () {
 
-            check_CloseDate();
+    //        check_CloseDate();
 
-        });
-        $("#Upload").focusout(function () {
+    //    });
 
-            check_Upload();
+    //    function check_ClientName() {
 
-        });
+    //        var ClientName_length = $("#ClientName").val();
 
-        function check_ClientName() {
+    //        if (ClientName_length == 0) {
+    //            $("#Client_error_message").html("Select the Cilent Name ");
+    //            $("#Client_error_message").show();
+    //            error_ClientName = true;
+    //        } else {
+    //            $("#Client_error_message").hide();
+    //        }
 
-            var ClientName_length = $("#ClientName").val();
+    //    }
 
-            if (ClientName_length == 0) {
-                $("#Client_error_message").html("Select the Cilent Name ");
-                $("#Client_error_message").show();
-                error_ClientName = true;
-            } else {
-                $("#Client_error_message").hide();
-            }
+    //    function check_ProjectName() {
 
-        }
+    //        var ProjectName_length = $("#ProjectName").val().length;
 
-        function check_ProjectName() {
+    //        if (ProjectName_length < 2 || ProjectName_length > 30) {
+    //            $("#Name_error_message").html(" Project Name  Should be between 2-30 characters");
+    //            $("#Name_error_message").show();
+    //            error_ProjectName = true;
+    //        } else {
+    //            $("#Name_error_message").hide();
+    //        }
 
-            var ProjectName_length = $("#ProjectName").val().length;
+    //    }
 
-            if (ProjectName_length < 2 || ProjectName_length > 30) {
-                $("#Name_error_message").html(" Project Name  Should be between 2-30 characters");
-                $("#Name_error_message").show();
-                error_ProjectName = true;
-            } else {
-                $("#Name_error_message").hide();
-            }
+    //    function check_PONumber() {
 
-        }
+    //        var PONumber_length = $("#PONumber").val().length;
 
-        function check_PONumber() {
+    //        if (PONumber_length == " ") {
+    //            $("#Po_error_message").html("Invalid PO Number ");
+    //            $("#Po_error_message").show();
+    //            error_PONumber = true;
+    //        } else {
+    //            $("#Po_error_message").hide();
+    //        }
 
-            var PONumber_length = $("#PONumber").val().length;
+    //    }
 
-            if (PONumber_length == " ") {
-                $("#Po_error_message").html("Invalid PO Number ");
-                $("#Po_error_message").show();
-                error_PONumber = true;
-            } else {
-                $("#Po_error_message").hide();
-            }
+    //    function check_PointOfContact() {
 
-        }
+    //        var PointOfContact_length = $("#PointOfContact").val().length;
 
-        function check_PointOfContact() {
+    //        if (PointOfContact_length == " ") {
+    //            $("#Contact_error_message").html("Invalid Point of Contact ");
+    //            $("#Contact_error_message").show();
+    //            error_PointOfContact = true;
+    //        } else {
+    //            $("#Contact_error_message").hide();
+    //        }
 
-            var PointOfContact_length = $("#PointOfContact").val().length;
+    //    }
 
-            if (PointOfContact_length == " ") {
-                $("#Contact_error_message").html("Invalid Point of Contact ");
-                $("#Contact_error_message").show();
-                error_PointOfContact = true;
-            } else {
-                $("#Contact_error_message").hide();
-            }
+    //    function check_ModeOfPayment() {
 
-        }
+    //        var ModeOfPayment_length = $("#ModeOfPayment").val();
 
-        function check_ModeOfPayment() {
+    //        if (ModeOfPayment_length == 0) {
+    //            $("#pay_error_message").html("Select the mode of payment");
+    //            $("#pay_error_message").show();
+    //            error_ModeOfPayment = true;
+    //        } else {
+    //            $("#pay_error_message").hide();
+    //        }
 
-            var ModeOfPayment_length = $("#ModeOfPayment").val();
+    //    }
 
-            if (ModeOfPayment_length == 0) {
-                $("#pay_error_message").html("Select the mode of payment");
-                $("#pay_error_message").show();
-                error_ModeOfPayment = true;
-            } else {
-                $("#pay_error_message").hide();
-            }
+    //    function check_Currency() {
 
-        }
+    //        var Currency_length = $("#Currency").val();
 
-        function check_Currency() {
+    //        if (Currency_length == 0) {
+    //            $("#Currency_error_message").html("Select the Currency Used");
+    //            $("#Currency_error_message").show();
+    //            error_Currency = true;
+    //        } else {
+    //            $("#Currency_error_message").hide();
+    //        }
 
-            var Currency_length = $("#Currency").val();
+    //    }
 
-            if (Currency_length == 0) {
-                $("#Currency_error_message").html("Select the Currency Used");
-                $("#Currency_error_message").show();
-                error_Currency = true;
-            } else {
-                $("#Currency_error_message").hide();
-            }
+    //    function check_Duration() {
 
-        }
+    //        var Duration_length = $("#Duration").val().length;
 
-        function check_Duration() {
+    //        if (Duration_length == " ") {
+    //            $("#Duration_error_message").html("Invalid Duration");
+    //            $("#Duration_error_message").show();
+    //            error_Duration = true;
+    //        } else {
+    //            $("#Duration_error_message").hide();
+    //        }
 
-            var Duration_length = $("#Duration").val().length;
+    //    }
 
-            if (Duration_length == " ") {
-                $("#Duration_error_message").html("Invalid Duration");
-                $("#Duration_error_message").show();
-                error_Duration = true;
-            } else {
-                $("#Duration_error_message").hide();
-            }
+    //    function check_StartDate() {
 
-        }
+    //        var StartDate_length = $("#StartDate").val().length;
 
-        function check_StartDate() {
+    //        if (StartDate_length == " ") {
+    //            $("#Start_error_message").html("Invalid Date");
+    //            $("#Start_error_message").show();
+    //            error_StartDate = true;
+    //        } else {
+    //            $("#Start_error_message").hide();
+    //        }
 
-            var StartDate_length = $("#StartDate").val().length;
+    //    }
 
-            if (StartDate_length == " ") {
-                $("#Start_error_message").html("Invalid Date");
-                $("#Start_error_message").show();
-                error_StartDate = true;
-            } else {
-                $("#Start_error_message").hide();
-            }
+    //    function check_InitialAmount() {
 
-        }
+    //        var InitialAmount_length = $("#InitialAmount").val().length;
 
-        function check_InitialAmount() {
+    //        if (InitialAmount_length == " ") {
+    //            $("#inital_error_message").html("Invalid Amount ");
+    //            $("#inital_error_message").show();
+    //            error_InitialAmount = true;
+    //        } else {
+    //            $("#inital_error_message").hide();
+    //        }
 
-            var InitialAmount_length = $("#InitialAmount").val().length;
+    //    }
 
-            if (InitialAmount_length == " ") {
-                $("#inital_error_message").html("Invalid Amount ");
-                $("#inital_error_message").show();
-                error_InitialAmount = true;
-            } else {
-                $("#inital_error_message").hide();
-            }
+    //    function check_Status() {
 
-        }
+    //        var Status_Lenght = $("#Status").val().length;
 
-        function check_Status() {
+    //        if (Status_Lenght == " ") {
+    //            $("#Status_error_message").html("Invalid Status");
+    //            $("#Status_error_message").show();
+    //            error_Status = true;
+    //        } else {
+    //            $("#Status_error_message").hide();
+    //        }
 
-            var Status_Lenght = $("#Status").val().length;
+    //    }
 
-            if (Status_Lenght == " ") {
-                $("#Status_error_message").html("Invalid Status");
-                $("#Status_error_message").show();
-                error_Status = true;
-            } else {
-                $("#Status_error_message").hide();
-            }
+    //    function check_CloseDate() {
 
-        }
+    //        var CloseDate_length = $("#CloseDate").val().length;
 
-        function check_CloseDate() {
+    //        if (CloseDate_length == " ") {
+    //            $("#Close_error_message").html("Invalid Date");
+    //            $("#Close_error_message").show();
+    //            error_CloseDate = true;
+    //        } else {
+    //            $("#Close_error_message").hide();
+    //        }
 
-            var CloseDate_length = $("#CloseDate").val().length;
+    //    }
 
-            if (CloseDate_length == " ") {
-                $("#Close_error_message").html("Invalid Date");
-                $("#Close_error_message").show();
-                error_CloseDate = true;
-            } else {
-                $("#Close_error_message").hide();
-            }
-
-        }
-
-        function check_Upload() {
-
-            var Upload_length = $("#Upload").size();
-
-            if (Upload_length == " ") {
-                $("#Upload_error_message").html("Upload a Valid File ");
-                $("#Upload_error_message").show();
-                error_Upload = true;
-            } else {
-                $("#Upload_error_message").hide();
-            }
-
-        }
+        
 
         $("body").on("click", "#btnSave", function () {
-            error_ClientName = false;
-            error_ProjectName = false;
-            error_PONumber = false;
-            error_PointOfContact = false;
-            error_ModeOfPayment = false;
-            error_Currency = false;
-            error_Duration = false;
-            error_StartDate = false;
-            error_InitialAmount = false;
-            error_Status = false;
-            error_CloseDate = false;
-            error_Upload = false;
+            //error_ClientName = false;
+            //error_ProjectName = false;
+            //error_PONumber = false;
+            //error_PointOfContact = false;
+            //error_ModeOfPayment = false;
+            //error_Currency = false;
+            //error_Duration = false;
+            //error_StartDate = false;
+            //error_InitialAmount = false;
+            //error_Status = false;
+            //error_CloseDate = false;
 
-            check_ClientName();
-            check_ProjectName();
-            check_PONumber();
-            check_PointOfContact();
-            check_ModeOfPayment();
-            check_Currency();
-            check_Duration();
-            check_StartDate();
-            check_InitialAmount();
-            check_Status();
-            check_CloseDate();
-            check_Upload();
-
-            if (error_ClientName == false &&
-                error_ProjectName == false &&
-                error_PONumber == false &&
-                error_PointOfContact == false &&
-                error_ModeOfPayment == false &&
-                error_Currency == false &&
-                error_Duration == false &&
-                error_StartDate == false &&
-                error_InitialAmount == false &&
-                error_Status == false &&
-                error_CloseDate == false &&
-                error_Upload == false
-            ) {
+            //check_ClientName();
+            //check_ProjectName();
+            //check_PONumber();
+            //check_PointOfContact();
+            //check_ModeOfPayment();
+            //check_Currency();
+            //check_Duration();
+            //check_StartDate();
+            //check_InitialAmount();
+            //check_Status();
+            //check_CloseDate();
+         
+            //if (error_ClientName == false &&
+            //    error_ProjectName == false &&
+            //    error_PONumber == false &&
+            //    error_PointOfContact == false &&
+            //    error_ModeOfPayment == false &&
+            //    error_Currency == false &&
+            //    error_Duration == false &&
+            //    error_StartDate == false &&
+            //    error_InitialAmount == false &&
+            //    error_Status == false &&
+            //    error_CloseDate == false 
+            //) {
                 var txtClientName = $("#ClientName");
                 var txtProjectName = $("#ProjectName");
                 var txtPONumber = $("#PONumber");
@@ -539,13 +516,13 @@
                     }
 
                 });
-            } else {
-                return false;
-            }
-
+            //} else {
+            //    return false;
+            //}
+        
         });
 
-    });
+    
     //delete operation
     $("body").on("click", "#demoGrid #Delete", function () {
         if (confirm("Do you want to delete this row?")) {
@@ -815,21 +792,22 @@
                     <tr>
                         <th></th>
                         <th style="display:none;">ID</th>
-                        <th>Client Name</th>
-                        <th>Project Name</th>
-                        <th>PO Number</th>
-                        <th>Master PO</th>
-                        <th>Point Of Contact</th>
-                        <th>Mode Of Payment</th>
-                        <th>Currency</th>
-                        <th>StartDate</th>
-                        <th>EndDate</th>
-                        <th>Initial Amount</th>
-                        <th>Duration</th>
-                        <th>PO Status</th>
-                        <th>Total Amount</th>
-                        <th>Close Date</th>
-                        <th>File</th>
+                        <th style="width:230px">Client Name</th>
+                        <th style="width:230px">Project Name</th>
+                        <th style="width:230px">PO Number</th>
+                        <th style="width:230px">Master PO</th>
+                        <th style="width:230px">File</th>
+                        <th style="width:230px">Point Of Contact</th>
+                        <th style="width:230px">Mode Of Payment</th>
+                        <th style="width:230px">Currency</th>
+                        <th style="width:230px">StartDate</th>
+                        <th style="width:230px">EndDate</th>
+                        <th style="width:230px">Initial Amount</th>
+                        <th style="width:230px">Duration</th>
+                        <th style="width:230px">PO Status</th>
+                        <th style="width:230px">Total Amount</th>
+                        <th style="width:230px">Close Date</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -864,9 +842,14 @@
                                 <span>@item.Parent_PO</span>
                                 <input type="text" value="@item.Parent_PO" style="display:none" />
                             </td>
+                            <td class="FileDate">
+                                <span>@item.FileData</span>
+                                <input type="text" value="@item.FileData" style="display:none" />
+                            </td>
                             <td class="Point_Of_Contact">
-                                <p style="display:none;"> @Html.DropDownList("pocList", ViewBag.clientList as SelectList)</p>
                                 <span>@item.Point_Of_Contact</span>
+                                <p style="display:none;"> @Html.DropDownList("pocList", ViewBag.pocList as SelectList)</p>
+                                
                             </td>
                             <td class="Mode_Of_Payment">
                                 <span>@item.Mode_Of_Payment</span>
@@ -910,10 +893,7 @@
                                 <span>@item.PO_Close_Date</span>
                                 <input type="text" value="@item.PO_Close_Date" style="display:none" />
                             </td>
-                            <td class="FileDate">
-                                <span>@item.FileData</span>
-                                <input type="text" value="@item.FileData" style="display:none" />
-                            </td>
+                           
 
                         </tr>
                     }
@@ -1062,4 +1042,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

@@ -519,24 +519,63 @@
     });
     $('#demoGrid1').dataTable({});
 
-    function change1() {
-        var r = confirm("Do you agree to update the status?");
-        if (r == true)
-        {
+    function Change1(){
+    alertify.confirm("This is a confirm dialol.", "hello",
+        function (e) {
             
-            return true;
-        }
-        else
-        {
-            
-            return false;
-        }
-        
-    };
+            if (e)
+            {
+                
+                document.getElementsByClassName("ajs-button ajs-ok")[0].setAttribute("class", "ajs-button ajs-ok btn btn-default");
+                document.getElementsByClassName("ajs-button ajs-ok")[0].setAttribute("data-toggle", "modal");
+                document.getElementsByClassName("ajs-button ajs-ok")[0].setAttribute("data-target", "#modal-default1");
+                this.close();
+                $("#modal-default1").modal('show');
 
-    function change() {
-        alert("do you agree to update the status?");
+            }
+        },
+        function () {
+            alertify.error('Cancel');
+        });
     };
+    //dropdown binding for status
+    $(document).ready(function () {
+        $(window).on("load", function () {
+            var Status = $("#Status1");
+            Status.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+            $.ajax({
+                url: "/EmployeeList/GetStatusList",
+                type: "Get",
+                success: function (response) {
+                    Status.empty().append('<option selected="selected" value="0">Select</option>');
+                    $.each(response, function () {
+                        Status.append($("<option></option>").val(this['ImSS_Skills_Category']).html(this['ImSS_Skills_Category']));
+                    });
+                }
+
+            });
+
+        });
+    });
+
+    $("body").on("click", "#btnSave1", function () {
+       
+        var value = sessionStorage.getItem("myId");
+        var emp = {};
+        emp.value = row.find(".ID").find("span").html();
+        emp.Status = row.find(".Status").find("span").html();
+        $.ajax({
+            type: "POST",
+            url: "/CustomerList/Edit",
+            data: '{emp:' + JSON.stringify(emp) + '}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                window.location.reload();
+            }
+        });
+
+    });
 </script>
 
 <br />
@@ -607,7 +646,7 @@
                         </td>
                         <td class="Status">
                             <span>@item.Status</span>
-                            <p style="display:none" id ="status" onchange="change1();"> @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
+                            <p style="display:none" id ="status" onchange="Change1();"> @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
                         </td>
 
                     </tr>
@@ -615,6 +654,43 @@
 
             </tbody>
         </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-default1" tabindex="-1" data-backdrop="static">
+    <div class="modal-dialog" style="width:500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Update Employee Status</h4>
+            </div>
+            <div class="modal-body">
+                <form id="form">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-3">Status</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                         <div class="col-sm-3">
+                                <select class="form-control" id="Status1"></select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave1" class="btn btn-outline-success">Update</button>
+                <button type="button" id="btnCancel" class="btn btn-default pull" data-dismiss="modal">Cancel</button>
+
+            </div>
+        </div>
     </div>
 </div>
 

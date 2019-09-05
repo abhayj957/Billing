@@ -31,6 +31,6 @@ namespace BillingApplication.DBContexts
         public string PO_Status { get; set; }
         public Nullable<decimal> PO_Total_Amount_INR { get; set; }
         public Nullable<System.DateTime> PO_Close_Date { get; set; }
-        public string FileData { get; set; }
+        public byte[] FileData { get; set; }
     }
 }

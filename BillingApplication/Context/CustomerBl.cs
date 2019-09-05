@@ -18,20 +18,20 @@ namespace BillingApplication.Context
                 {
                     var CustomerList = (from a in context.ImSS_Master_Client
                                         join b in context.ImSS_Cust_Emp_Details on a.Emp_Name equals b.Emp_Number
-                                        
+
                                         select new customer
                                         {
-                                              ID=a.ID,
-                                              Emp_Name=a.Emp_Name,
-                                              Client_Name=a.Client_Name, 
-                                              Email=a.Email, 
-                                              Reporting_Manager_at_client_place=a.Reporting_Manager_at_client_place,
-                                              Cilent_Start_Date=b.Cilent_Start_Date,
-                                              Shadow=a.Shadow, 
-                                              Location=a.Location, 
-                                              Status=a.Status 
+                                            ID = a.ID,
+                                            Emp_Name = a.Emp_Name,
+                                            Client_Name = a.Client_Name,
+                                            Email = a.Email,
+                                            Reporting_Manager_at_client_place = a.Reporting_Manager_at_client_place,
+                                            Cilent_Start_Date = b.Cilent_Start_Date,
+                                            Shadow = a.Shadow,
+                                            Location = a.Location,
+                                            Status = a.Status
                                         }).ToList();
-                                        return CustomerList;
+                    return CustomerList;
 
                 }
 
@@ -43,6 +43,27 @@ namespace BillingApplication.Context
             }
 
 
+        }
+    
+
+        public List<ImSS_Master_Emp_List> UpdateEmployee(ImSS_Master_Emp_List empl)
+        {
+            try
+            {
+                using (var context = new Billing_StagingEntities1())
+                {
+                    ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.ID == empl.ID select c).FirstOrDefault();
+                    UpdateEmployee.Status = empl.Status;
+                    context.SaveChanges();
+                    return (from a in context.ImSS_Master_Emp_List select a).ToList();
+                }
+                
+                }
+            
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
 
@@ -57,11 +78,6 @@ namespace BillingApplication.Context
                     lst.Cilent_Start_Date = DateTime.Now;
                     lst.Emp_Number = Addcust.Emp_Name;
                     lst.Cilent_ID = Addcust.Client_Name;
-                    if(Addcust.Status=="Active")
-                    {
-                        ImSS_Master_Emp_List UpdateEmployee = (from c in context.ImSS_Master_Emp_List where c.Emp_Name == Addcust.Emp_Name select c).FirstOrDefault();
-                        UpdateEmployee.Status = "Assigned";
-                    }
                     
                     context.ImSS_Master_Client.Add(Addcust);
                     context.ImSS_Cust_Emp_Details.Add(lst);
