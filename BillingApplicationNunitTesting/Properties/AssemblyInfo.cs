@@ -2,18 +2,18 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("BillingApplicationTesting")]
+[assembly: AssemblyTitle("BillingApplicationNunitTesting")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BillingApplicationTesting")]
+[assembly: AssemblyProduct("BillingApplicationNunitTesting")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("2668c510-7fe5-402b-a9eb-7d80dbc729f0")]
+[assembly: Guid("f050b408-471f-42a5-a913-bac29fa98939")]
 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
