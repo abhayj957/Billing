@@ -32,9 +32,9 @@
         <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Emp_Details" Width="1.5" PointX="15.375" PointY="0.75" />
         <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Master_Client" Width="1.5" PointX="14.375" PointY="13.75" />
         <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Client_Details" Width="1.5" PointX="5.375" PointY="16.75" />
-        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Master_PO" Width="1.5" PointX="7.375" PointY="16.75" />
         <EntityTypeShape EntityType="Billing_StagingModel.ImSS_PO_Duration" Width="1.5" PointX="9.375" PointY="16.75" />
         <EntityTypeShape EntityType="Billing_StagingModel.ImSS_POC" Width="1.5" PointX="16.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Master_PO" Width="1.5" PointX="16.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

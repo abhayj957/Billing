@@ -1,17 +1,26 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+﻿<ul style="width:15%; padding:10px;" class="sidebar-menu" data-widget="tree">
+    <li class="header"></li>
+    <li class="active treeview menu-open">
+        <a href="#">
+            <i class="fas fa-columns"></i><span>    Main Menu</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a id="employee" href="@Url.Action("EmployeeList","EmployeeList")"><i class="fas fa-user-friends"></i>    Employee</a></li>
+            <li><a href="@Url.Action("CustomerList","CustomerList")"><i class="fas fa-briefcase"></i>   Customers</a></li>
+            <li><a href="@Url.Action("POMaster","POMaster")"><i class="fas fa-file-invoice-dollar"></i>  Purchase Orders</a></li>
+            <li><a href="@Url.Action("Contact","Home")"><i class="fas fa-file-invoice"></i>   Tree</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">
+            <i class="far fa-chart-bar"></i> <span>Report</span>
+            <span class="pull-right-container">
+                <small class="label pull-right bg-green">new</small>
+            </span>
+        </a>
+    </li>
+</ul>
+            

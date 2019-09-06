@@ -254,7 +254,7 @@
           <Property Name="PO_Status" Type="varchar" MaxLength="50" />
           <Property Name="PO_Total_Amount_INR" Type="decimal" Precision="10" Scale="0" />
           <Property Name="PO_Close_Date" Type="date" />
-          <Property Name="FileData" Type="nvarchar(max)" />
+          <Property Name="FileData" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ImSS_MasterManager">
           <Key>
@@ -705,9 +705,9 @@
           <EntitySet Name="ImSS_Emp_Details" EntityType="Billing_StagingModel.ImSS_Emp_Details" />
           <EntitySet Name="ImSS_Master_Client" EntityType="Billing_StagingModel.ImSS_Master_Client" />
           <EntitySet Name="ImSS_Client_Details" EntityType="Billing_StagingModel.ImSS_Client_Details" />
-          <EntitySet Name="ImSS_Master_PO" EntityType="Billing_StagingModel.ImSS_Master_PO" />
           <EntitySet Name="ImSS_PO_Duration" EntityType="Billing_StagingModel.ImSS_PO_Duration" />
           <EntitySet Name="ImSS_POC" EntityType="Billing_StagingModel.ImSS_POC" />
+          <EntitySet Name="ImSS_Master_PO" EntityType="Billing_StagingModel.ImSS_Master_PO" />
         </EntityContainer>
         <EntityType Name="ImSS_Currency">
           <Key>
@@ -1030,6 +1030,20 @@
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="ImSS_PO_Duration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Month" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ImSS_POC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Point_Of_Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="ImSS_Master_PO">
           <Key>
             <PropertyRef Name="ID" />
@@ -1051,21 +1065,7 @@
           <Property Name="PO_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PO_Total_Amount_INR" Type="Decimal" Precision="10" Scale="0" />
           <Property Name="PO_Close_Date" Type="DateTime" Precision="0" />
-          <Property Name="FileData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="ImSS_PO_Duration">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Month" Type="Int32" />
-        </EntityType>
-        <EntityType Name="ImSS_POC">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Point_Of_Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FileData" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1472,6 +1472,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ImSS_PO_Duration">
+            <EntityTypeMapping TypeName="Billing_StagingModel.ImSS_PO_Duration">
+              <MappingFragment StoreEntitySet="ImSS_PO_Duration">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImSS_POC">
+            <EntityTypeMapping TypeName="Billing_StagingModel.ImSS_POC">
+              <MappingFragment StoreEntitySet="ImSS_POC">
+                <ScalarProperty Name="Point_Of_Contact" ColumnName="Point_Of_Contact" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ImSS_Master_PO">
             <EntityTypeMapping TypeName="Billing_StagingModel.ImSS_Master_PO">
               <MappingFragment StoreEntitySet="ImSS_Master_PO">
@@ -1492,22 +1508,6 @@
                 <ScalarProperty Name="PO_Number" ColumnName="PO_Number" />
                 <ScalarProperty Name="Project_Name" ColumnName="Project_Name" />
                 <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImSS_PO_Duration">
-            <EntityTypeMapping TypeName="Billing_StagingModel.ImSS_PO_Duration">
-              <MappingFragment StoreEntitySet="ImSS_PO_Duration">
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ImSS_POC">
-            <EntityTypeMapping TypeName="Billing_StagingModel.ImSS_POC">
-              <MappingFragment StoreEntitySet="ImSS_POC">
-                <ScalarProperty Name="Point_Of_Contact" ColumnName="Point_Of_Contact" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

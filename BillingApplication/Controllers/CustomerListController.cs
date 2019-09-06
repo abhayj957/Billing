@@ -153,6 +153,26 @@ namespace BillingApplication.Controllers
                 throw e;
             }
         }
+        
+        //
+        [HttpPost]
+        public ActionResult Edit(ImSS_Master_Emp_List emp)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    CBL.UpdateEmployee(emp);
+
+                }
+                return Json(emp);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+        }
 
     }
 }

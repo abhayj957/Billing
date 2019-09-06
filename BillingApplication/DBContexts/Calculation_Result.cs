@@ -12,7 +12,7 @@ namespace BillingApplication.DBContexts
     using System;
     
     public partial class Calculation_Result
-    { 
+    {
         public long ID { get; set; }
         public string Emp_Number { get; set; }
         public string Emp_Name { get; set; }
